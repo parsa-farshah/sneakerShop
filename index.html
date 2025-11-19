@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneaky</title>
+    <link rel="stylesheet" href="src/styles/output.css" />
+  </head>
+  <body class="archivo dark:text-white">
+    <!------------------------------- section main ------------------------->
+    <main class="w-full">
+      <!-------------------------------------- header ------------------------------>
+      <header class="w-full h-[110vh] bg-[#aaa] relative">
+        <!---------------------------- nav ---------------------->
+        <nav
+          class="w-full xl:w-[90%] xl:mx-auto px-4 py-5 flex justify-between items-center duration-300 relative z-10"
+        >
+          <!--------------------- logo ------------->
+          <figure class="w-[100px] sm:w-[150px] flex items-center py-0.5">
+            <img
+              class="w-full h-5 sm:object-cover"
+              src="src/icons/logo.svg"
+              alt=""
+            />
+          </figure>
+          <!-- links -->
+          <ul
+            class="hidden lg:flex **:capitalize gap-11 archivo font-semibold text-lg"
+          >
+            <li><a href="">products</a></li>
+            <li><a href="">about us</a></li>
+            <li><a href="">blog</a></li>
+            <li><a href="">contact us</a></li>
+          </ul>
+          <!----------------------- menu and basket --------------->
+          <div class="flex items-center gap-4 sm:gap-8 lg:mr-8">
+            <!--------------------------- btn dark light ------------->
+            <div
+              class="w-7 h-7 bg-black dark:bg-white rounded-full cursor-pointer"
+            ></div>
+            <!--------------------------- end btn dark light ------------->
+
+            <!------------- basket -------->
+            <figure
+              class="relative before:content-[''] before:absolute before:top-[-10%] before:left-[110%] before:w-1 before:h-1 before:rounded-full before:border before:bg-black cursor-pointer"
+            >
+              <img src="src/icons/cart.svg" alt="" />
+            </figure>
+            <!-------------- profile --------->
+            <figure class="cursor-pointer">
+              <img class="w-7 h-7" src="src/icons/user.png" alt="" />
+            </figure>
+            <!--------------- menu --------->
+            <figure class="p-2 cursor-pointer lg:hidden duration-300">
+              <img src="src/icons/menu-icon.svg" alt="" />
+            </figure>
+          </div>
+        </nav>
+        <!-------------------------- image ----------------------->
+        <div
+          class="w-full h-full absolute top-0 left-0 bg-fixed bg-cover bg-bottom bg-[url(../images/bg-header.jpg)]"
+        ></div>
+        <!---------------------------- gradient -------------------->
+        <div
+          class="w-full h-[50%] bg-gradient-to-b from-[#f1f1f183] to-[#fff0] absolute top-0 right-0 z-0"
+        ></div>
+        <div class="w-full h-full relative z-20 px-4 py-8 xl:mx-6 xl:p-8">
+          <h1 class="text-7xl w-[50%] font-semibold lg:w-[40%] lg:text-[110px]">
+            Sneaky Shoes.
+          </h1>
+          <p class="text-[17px] w-[60%] mt-16 sm:w-[50%] md:w-[40%] lg:w-[30%]">
+            Introductin our special techwear colection inspired by aethertic of
+            japanse cyber punk culutre and military uraabn fashion and best_____
+          </p>
+          <!-- explore -->
+          <div class="flex gap-2 items-center mt-6">
+            <img src="src/icons/star.svg" alt="" />
+            <p>Explore</p>
+          </div>
+        </div>
+
+        <!--------------------------- text header ---------------------->
+      </header>
+      <!------------------------------- end header ------------------------------>
+    </main>
+    <!------------------------------- end section main ------------------------->
+
+    <!-- basket -->
+    <section></section>
+  </body>
+  <script src="src/js/index.js"></script>
+</html>

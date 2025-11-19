@@ -1,0 +1,15 @@
+@import "tailwindcss";
+/* npx @tailwindcss/cli -i ./src/styles/input.css -o ./src/styles/output.css --watch */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: archivo;
+  src: url(../fonts/Archivo.ttf);
+}
+
+@layer utilities {
+  .archivo {
+    font-family: archivo;
+  }
+}

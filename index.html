@@ -13,7 +13,7 @@
       <header class="w-full pb-24 bg-[#aaa] relative">
         <!-------------------------- image ----------------------->
         <div
-          class="w-full h-full absolute top-0 left-0 bg-fixed bg-cover bg-bottom bg-[url(../images/bg-header.jpg)] bg-no-repeat dark:bg-[url(../images/bgHeaderDark.png)]"
+          class="w-full h-full absolute top-0 left-0 bg-fixed bg-cover bg-bottom bg-[url(../images/bg-header.jpg)] bg-no-repeat dark:bg-center dark:bg-[url(../images/bgHeaderDark.jpg)]"
         ></div>
         <!---------------------------- gradient -------------------->
         <div
@@ -26,13 +26,19 @@
             class="w-full xl:w-[90%] xl:mx-auto px-4 py-5 flex justify-between items-center duration-300 relative z-10"
           >
             <!--------------------- logo ------------->
-            <figure class="w-[100px] sm:w-[150px] flex items-center py-0.5">
-              <img
-                class="w-full h-5 sm:object-cover"
-                src="src/icons/logo.svg"
-                alt=""
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="180"
+              height="60"
+              viewBox="0 0 24 24"
+              class="dark:stroke-white"
+            >
+              <path
+                fill="#000000"
+                d="M24 7.8L6.442 15.276c-1.456.616-2.679.925-3.668.925c-1.12 0-1.933-.392-2.437-1.177c-.317-.504-.41-1.143-.28-1.918c.13-.775.476-1.6 1.036-2.478c.467-.71 1.232-1.643 2.297-2.8a6.122 6.122 0 0 0-.784 1.848c-.28 1.195-.028 2.072.756 2.632c.373.261.886.392 1.54.392c.522 0 1.11-.084 1.764-.252L24 7.8z"
+                class="dark:fill-white"
               />
-            </figure>
+            </svg>
             <!-- links -->
             <ul
               class="hidden lg:flex **:capitalize gap-11 archivo font-semibold text-lg"
@@ -52,23 +58,62 @@
               <!--------------------------- end btn dark light ------------->
 
               <!------------- basket -------->
-              <figure
-                class="relative before:content-[''] before:absolute before:top-[-10%] before:left-[110%] before:w-1 before:h-1 before:rounded-full before:border before:bg-black cursor-pointer"
+              <div
+                class="relative before:content-[''] before:absolute before:top-[-10%] before:left-[102%] before:w-1 before:h-1 before:rounded-full before:border before:bg-black cursor-pointer"
               >
-                <img src="src/icons/cart.svg" alt="" />
-              </figure>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6 dark:stroke-white"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                  />
+                </svg>
+              </div>
+
               <!-------------- profile --------->
-              <figure class="cursor-pointer">
-                <img class="w-7 h-7" src="src/icons/user.png" alt="" />
-              </figure>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6 dark:stroke-white duration-300 cursor-pointer"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+              </svg>
+
               <!--------------- menu --------->
-              <figure class="p-2 cursor-pointer lg:hidden duration-300">
-                <img src="src/icons/menu-icon.svg" alt="" />
-              </figure>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6 cursor-pointer lg:hidden duration-300"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 9h16.5m-16.5 6.75h16.5"
+                />
+              </svg>
             </div>
           </nav>
-          <!-- text -->
-          <div class="w-[90%] h-full relative z-20 pl-4 py-8 xl:ml-6 xl:py-8 xl:pl-8">
+          <!---------------------------- text ------------------------->
+          <div
+            class="w-[90%] h-full relative z-20 pl-4 py-8 xl:ml-6 xl:py-8 xl:pl-8"
+          >
             <h1
               class="text-7xl w-[50%] font-semibold lg:w-[40%] lg:text-[110px]"
             >
@@ -83,7 +128,21 @@
             </p>
             <!-- explore -->
             <div class="flex gap-2 items-center mt-6">
-              <img src="src/icons/star.svg" alt="" />
+              <svg
+                width="30"
+                height="30"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="dark:stroke-white rotate-45"
+              >
+                <path
+                  fill="#000000"
+                  fill-rule="evenodd"
+                  d="M15.38 8.65L12 .986L8.62 8.65L.953 12.03l7.667 3.38L12 23.078l3.38-7.668l7.667-3.38z"
+                  clip-rule="evenodd"
+                  class="dark:fill-white"
+                />
+              </svg>
               <p>Explore</p>
             </div>
           </div>
@@ -100,5 +159,7 @@
     <!-- basket -->
     <section></section>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+
   <script src="src/js/index.js"></script>
 </html>

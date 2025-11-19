@@ -22,3 +22,13 @@ $darkLightBtn.addEventListener("click", () => {
     $html.classList.add("dark");
   }
 });
+
+// profile click
+let $profileBtn = document.querySelector("#profileBtn");
+let $main = document.querySelector("#main");
+let $profile = document.querySelector("#profile");
+$profileBtn.addEventListener("click", () => {
+  $main.classList.add("hidden");
+  $profile.classList.remove("hidden");
+  $profile.classList.add("flex");
+});

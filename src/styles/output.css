@@ -192,6 +192,27 @@
   .z-20 {
     z-index: 20;
   }
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
   }
@@ -204,6 +225,9 @@
   .hidden {
     display: none;
   }
+  .table {
+    display: table;
+  }
   .h-5 {
     height: calc(var(--spacing) * 5);
   }
@@ -215,6 +239,9 @@
   }
   .h-\[110vh\] {
     height: 110vh;
+  }
+  .h-\[200vh\] {
+    height: 200vh;
   }
   .h-full {
     height: 100%;
@@ -234,8 +261,14 @@
   .w-full {
     width: 100%;
   }
+  .border-collapse {
+    border-collapse: collapse;
+  }
   .cursor-pointer {
     cursor: pointer;
+  }
+  .resize {
+    resize: both;
   }
   .items-center {
     align-items: center;
@@ -254,6 +287,10 @@
   }
   .rounded-full {
     border-radius: calc(infinity * 1px);
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
   }
   .bg-\[\#aaa\] {
     background-color: #aaa;
@@ -291,6 +328,9 @@
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
   }
+  .py-0 {
+    padding-block: calc(var(--spacing) * 0);
+  }
   .py-0\.5 {
     padding-block: calc(var(--spacing) * 0.5);
   }
@@ -299,6 +339,27 @@
   }
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
+  }
+  .pb-2 {
+    padding-bottom: calc(var(--spacing) * 2);
+  }
+  .pb-5 {
+    padding-bottom: calc(var(--spacing) * 5);
+  }
+  .pb-6 {
+    padding-bottom: calc(var(--spacing) * 6);
+  }
+  .pb-24 {
+    padding-bottom: calc(var(--spacing) * 24);
+  }
+  .pb-52 {
+    padding-bottom: calc(var(--spacing) * 52);
+  }
+  .pb-60 {
+    padding-bottom: calc(var(--spacing) * 60);
+  }
+  .pb-96 {
+    padding-bottom: calc(var(--spacing) * 96);
   }
   .text-7xl {
     font-size: var(--text-7xl);
@@ -314,6 +375,13 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
+  }
+  .underline {
+    text-decoration-line: underline;
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
   }
   .duration-300 {
     --tw-duration: 300ms;
@@ -454,6 +522,26 @@
       padding: calc(var(--spacing) * 8);
     }
   }
+  .\32 xl\:container {
+    @media (width >= 96rem) {
+      width: 100%;
+      @media (width >= 40rem) {
+        max-width: 40rem;
+      }
+      @media (width >= 48rem) {
+        max-width: 48rem;
+      }
+      @media (width >= 64rem) {
+        max-width: 64rem;
+      }
+      @media (width >= 80rem) {
+        max-width: 80rem;
+      }
+      @media (width >= 96rem) {
+        max-width: 96rem;
+      }
+    }
+  }
   .dark\:bg-white {
     &:where(.dark, .dark *) {
       background-color: var(--color-white);
@@ -473,6 +561,11 @@
   .archivo {
     font-family: archivo;
   }
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-gradient-position {
   syntax: "*";
@@ -520,6 +613,11 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @property --tw-duration {
   syntax: "*";
   inherits: false;
@@ -529,14 +627,10 @@
   initial-value: "";
   inherits: false;
 }
-@property --tw-border-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
       --tw-gradient-position: initial;
       --tw-gradient-from: #0000;
       --tw-gradient-via: #0000;
@@ -547,9 +641,9 @@
       --tw-gradient-via-position: 50%;
       --tw-gradient-to-position: 100%;
       --tw-font-weight: initial;
+      --tw-outline-style: solid;
       --tw-duration: initial;
       --tw-content: "";
-      --tw-border-style: solid;
     }
   }
 }

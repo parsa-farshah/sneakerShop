@@ -237,9 +237,6 @@
   .h-\[50\%\] {
     height: 50%;
   }
-  .h-\[110vh\] {
-    height: 110vh;
-  }
   .h-\[200vh\] {
     height: 200vh;
   }
@@ -254,6 +251,9 @@
   }
   .w-\[60\%\] {
     width: 60%;
+  }
+  .w-\[90\%\] {
+    width: 90%;
   }
   .w-\[100px\] {
     width: 100px;
@@ -322,6 +322,9 @@
   .bg-bottom {
     background-position: bottom;
   }
+  .bg-no-repeat {
+    background-repeat: no-repeat;
+  }
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
@@ -340,26 +343,11 @@
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
   }
-  .pb-2 {
-    padding-bottom: calc(var(--spacing) * 2);
-  }
-  .pb-5 {
-    padding-bottom: calc(var(--spacing) * 5);
-  }
-  .pb-6 {
-    padding-bottom: calc(var(--spacing) * 6);
-  }
   .pb-24 {
     padding-bottom: calc(var(--spacing) * 24);
   }
-  .pb-52 {
-    padding-bottom: calc(var(--spacing) * 52);
-  }
-  .pb-60 {
-    padding-bottom: calc(var(--spacing) * 60);
-  }
-  .pb-96 {
-    padding-bottom: calc(var(--spacing) * 96);
+  .pl-4 {
+    padding-left: calc(var(--spacing) * 4);
   }
   .text-7xl {
     font-size: var(--text-7xl);
@@ -502,14 +490,14 @@
       font-size: 110px;
     }
   }
-  .xl\:mx-6 {
-    @media (width >= 80rem) {
-      margin-inline: calc(var(--spacing) * 6);
-    }
-  }
   .xl\:mx-auto {
     @media (width >= 80rem) {
       margin-inline: auto;
+    }
+  }
+  .xl\:ml-6 {
+    @media (width >= 80rem) {
+      margin-left: calc(var(--spacing) * 6);
     }
   }
   .xl\:w-\[90\%\] {
@@ -517,9 +505,14 @@
       width: 90%;
     }
   }
-  .xl\:p-8 {
+  .xl\:py-8 {
     @media (width >= 80rem) {
-      padding: calc(var(--spacing) * 8);
+      padding-block: calc(var(--spacing) * 8);
+    }
+  }
+  .xl\:pl-8 {
+    @media (width >= 80rem) {
+      padding-left: calc(var(--spacing) * 8);
     }
   }
   .\32 xl\:container {
@@ -542,9 +535,24 @@
       }
     }
   }
+  .\32 xl\:mx-auto {
+    @media (width >= 96rem) {
+      margin-inline: auto;
+    }
+  }
+  .dark\:hidden {
+    &:where(.dark, .dark *) {
+      display: none;
+    }
+  }
   .dark\:bg-white {
     &:where(.dark, .dark *) {
       background-color: var(--color-white);
+    }
+  }
+  .dark\:bg-\[url\(\.\.\/images\/bgHeaderDark\.png\)\] {
+    &:where(.dark, .dark *) {
+      background-image: url(../images/bgHeaderDark.png);
     }
   }
   .dark\:text-white {

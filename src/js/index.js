@@ -1,2 +1,6 @@
 let $html = document.documentElement;
-let 
+let $darkLightBtn = document.getElementById("darkLightBtn");
+
+$darkLightBtn.addEventListener("click", () => {
+  $html.classList.toggle("dark");
+});

@@ -13,14 +13,14 @@
       <header class="w-full pb-24 bg-[#aaa] relative">
         <!-------------------------- image ----------------------->
         <div
-          class="w-full h-full absolute top-0 left-0 bg-fixed bg-cover bg-bottom bg-[url(../images/bg-header.jpg)]"
+          class="w-full h-full absolute top-0 left-0 bg-fixed bg-cover bg-bottom bg-[url(../images/bg-header.jpg)] bg-no-repeat dark:bg-[url(../images/bgHeaderDark.png)]"
         ></div>
         <!---------------------------- gradient -------------------->
         <div
-          class="w-full h-[50%] bg-gradient-to-b from-[#f1f1f183] to-[#fff0] absolute top-0 right-0 z-0"
+          class="w-full h-[50%] dark:hidden bg-gradient-to-b from-[#f1f1f183] to-[#fff0] absolute top-0 right-0 z-0"
         ></div>
         <!----------------------------- container ------------------------>
-        <div class="2xl:container mx-auto">
+        <div class="w-full 2xl:container 2xl:mx-auto">
           <!---------------------------- nav ---------------------->
           <nav
             class="w-full xl:w-[90%] xl:mx-auto px-4 py-5 flex justify-between items-center duration-300 relative z-10"
@@ -46,6 +46,7 @@
             <div class="flex items-center gap-4 sm:gap-8 lg:mr-8">
               <!--------------------------- btn dark light ------------->
               <div
+                id="darkLightBtn"
                 class="w-7 h-7 bg-black dark:bg-white rounded-full cursor-pointer"
               ></div>
               <!--------------------------- end btn dark light ------------->
@@ -67,7 +68,7 @@
             </div>
           </nav>
           <!-- text -->
-          <div class="w-full h-full relative z-20 px-4 py-8 xl:mx-6 xl:p-8">
+          <div class="w-[90%] h-full relative z-20 pl-4 py-8 xl:ml-6 xl:py-8 xl:pl-8">
             <h1
               class="text-7xl w-[50%] font-semibold lg:w-[40%] lg:text-[110px]"
             >

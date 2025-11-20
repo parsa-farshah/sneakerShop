@@ -3,10 +3,44 @@ let $darkLightBtn = document.getElementById("darkLightBtn");
 
 let $theme = Cookies.get("theme");
 
+// cookie set theme
 if ($theme == "black") {
   $html.classList.add("dark");
 } else {
   $html.classList.remove("dark");
+}
+
+// cookie log in automathic
+let $userNameAcc = Cookies.get("userNameSneaky");
+let $passwordAcc = Cookies.get("passwordSneaky");
+
+if ($userNameAcc != undefined && $passwordAcc != undefined) {
+  fetch("https://6912e51452a60f10c8232605.mockapi.io/users", {
+    method: "GET",
+    headers: { "content-type": "application/json" },
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // handle error
+    })
+    .then((tasks) => {
+      // Do something with the list of tasks
+      tasks.map((val) => {
+        if (val.username == $userNameAcc && val.password == $passwordAcc) {
+          $userNameWrapper.innerText = "Hi," + val.username;
+
+          // go to main page
+          $profile.classList.remove("flex");
+          $main.classList.remove("hidden");
+          $main.classList.add("block");
+        }
+      });
+    })
+    .catch((error) => {
+      // handle error
+    });
 }
 
 let flag = 0;
@@ -48,7 +82,7 @@ $btnSignUp.addEventListener("click", () => {
 
   // signup add to mock api
   const newTask = {
-    name: $SignUpName,
+    username: $SignUpName,
     email: $SignUpEmail,
     password: $SignUpPassword,
   };
@@ -67,12 +101,15 @@ $btnSignUp.addEventListener("click", () => {
     })
     .then((task) => {
       // do something with the new task
-      $userNameWrapper.innerText = "Hi," + task.name;
+      $userNameWrapper.innerText = "Hi," + task.username;
 
       // go to main page
       $profile.classList.remove("flex");
       $main.classList.remove("hidden");
       $main.classList.add("block");
+
+      Cookies.set("userNameSneaky", task.username, { expires: 7 });
+      Cookies.set("passwordSneaky", task.password, { expires: 7 });
     })
     .catch((error) => {
       // handle error
@@ -97,4 +134,43 @@ $signUpFormBtn.addEventListener("click", () => {
   $logInWrapper.classList.add("hidden");
   $signUpWrapper.classList.remove("hidden");
   $signUpWrapper.classList.add("block");
+});
+
+// log in click
+let $btnLogIN = document.querySelector("#btnLogIN");
+let $logInWrapperInputs = document.querySelectorAll("#logInWrapper>div>input");
+
+$btnLogIN.addEventListener("click", () => {
+  let emailLogIn = $logInWrapperInputs[0].value;
+  let passwordLogIn = $logInWrapperInputs[1].value;
+
+  fetch("https://6912e51452a60f10c8232605.mockapi.io/users", {
+    method: "GET",
+    headers: { "content-type": "application/json" },
+  })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      // handle error
+    })
+    .then((tasks) => {
+      // Do something with the list of tasks
+      tasks.map((val) => {
+        if (val.email == emailLogIn && val.password == passwordLogIn) {
+          $userNameWrapper.innerText = "Hi," + val.username;
+
+          // go to main page
+          $profile.classList.remove("flex");
+          $main.classList.remove("hidden");
+          $main.classList.add("block");
+
+          Cookies.set("userNameSneaky", val.username, { expires: 7 });
+          Cookies.set("passwordSneaky", val.password, { expires: 7 });
+        }
+      });
+    })
+    .catch((error) => {
+      // handle error
+    });
 });

@@ -37,6 +37,7 @@ $profileBtn.addEventListener("click", () => {
 
 let $btnSignUp = document.querySelector("#btnSignUp");
 let $signUpInputs = document.querySelectorAll("#signUpWrapper>div>input");
+let $signUpWrapper = document.querySelector("#signUpWrapper");
 let $userNameWrapper = document.querySelector("#userNameWrapper");
 
 $btnSignUp.addEventListener("click", () => {
@@ -72,10 +73,28 @@ $btnSignUp.addEventListener("click", () => {
       $profile.classList.remove("flex");
       $main.classList.remove("hidden");
       $main.classList.add("block");
-
-      
     })
     .catch((error) => {
       // handle error
     });
+});
+
+// log in
+let $logInBtn = document.querySelector("#logInBtn");
+let $logInWrapper = document.querySelector("#logInWrapper");
+
+$logInBtn.addEventListener("click", () => {
+  $signUpWrapper.classList.remove("block");
+  $signUpWrapper.classList.add("hidden");
+  $logInWrapper.classList.remove("hidden");
+  $logInWrapper.classList.add("block");
+});
+
+let $signUpFormBtn = document.querySelector("#signUpFormBtn");
+
+$signUpFormBtn.addEventListener("click", () => {
+  $logInWrapper.classList.remove("block");
+  $logInWrapper.classList.add("hidden");
+  $signUpWrapper.classList.remove("hidden");
+  $signUpWrapper.classList.add("block");
 });

@@ -13,6 +13,8 @@
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
     --text-lg: 1.125rem;
     --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
@@ -256,6 +258,9 @@
   .h-\[50\%\] {
     height: 50%;
   }
+  .h-\[200px\] {
+    height: 200px;
+  }
   .h-\[200vh\] {
     height: 200vh;
   }
@@ -265,6 +270,12 @@
   .w-7 {
     width: calc(var(--spacing) * 7);
   }
+  .w-\[3\] {
+    width: 3;
+  }
+  .w-\[40\%\] {
+    width: 40%;
+  }
   .w-\[50\%\] {
     width: 50%;
   }
@@ -273,6 +284,12 @@
   }
   .w-\[90\%\] {
     width: 90%;
+  }
+  .w-\[150px\] {
+    width: 150px;
+  }
+  .w-\[180px\] {
+    width: 180px;
   }
   .w-full {
     width: 100%;
@@ -291,6 +308,9 @@
   }
   .flex-col {
     flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
   }
   .items-center {
     align-items: center;
@@ -404,6 +424,10 @@
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
   }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
   .text-xl {
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
@@ -489,6 +513,11 @@
       content: var(--tw-content);
     }
   }
+  .sm\:w-\[30\%\] {
+    @media (width >= 40rem) {
+      width: 30%;
+    }
+  }
   .sm\:w-\[50\%\] {
     @media (width >= 40rem) {
       width: 50%;
@@ -534,6 +563,11 @@
       display: none;
     }
   }
+  .lg\:w-\[22\%\] {
+    @media (width >= 64rem) {
+      width: 22%;
+    }
+  }
   .lg\:w-\[30\%\] {
     @media (width >= 64rem) {
       width: 30%;
@@ -549,6 +583,11 @@
       font-size: 110px;
     }
   }
+  .xl\:mx-6 {
+    @media (width >= 80rem) {
+      margin-inline: calc(var(--spacing) * 6);
+    }
+  }
   .xl\:mx-auto {
     @media (width >= 80rem) {
       margin-inline: auto;
@@ -562,6 +601,11 @@
   .xl\:w-\[90\%\] {
     @media (width >= 80rem) {
       width: 90%;
+    }
+  }
+  .xl\:px-8 {
+    @media (width >= 80rem) {
+      padding-inline: calc(var(--spacing) * 8);
     }
   }
   .xl\:px-\[10\%\] {
@@ -614,9 +658,19 @@
       background-color: #0e0e0e;
     }
   }
+  .dark\:bg-\[\#141414\] {
+    &:where(.dark, .dark *) {
+      background-color: #141414;
+    }
+  }
   .dark\:bg-\[\#e4e4e4b2\] {
     &:where(.dark, .dark *) {
       background-color: #e4e4e4b2;
+    }
+  }
+  .dark\:bg-\[\#fff\] {
+    &:where(.dark, .dark *) {
+      background-color: #fff;
     }
   }
   .dark\:bg-black {

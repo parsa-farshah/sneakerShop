@@ -35,6 +35,9 @@ if ($userNameAcc != undefined && $passwordAcc != undefined) {
           $profile.classList.remove("flex");
           $main.classList.remove("hidden");
           $main.classList.add("block");
+
+          // delete icon profile
+          $profileBtn.classList.add("hidden");
         }
       });
     })
@@ -110,6 +113,9 @@ $btnSignUp.addEventListener("click", () => {
 
       Cookies.set("userNameSneaky", task.username, { expires: 7 });
       Cookies.set("passwordSneaky", task.password, { expires: 7 });
+
+      // delete icon profile
+      $profileBtn.classList.add("hidden");
     })
     .catch((error) => {
       // handle error
@@ -167,6 +173,9 @@ $btnLogIN.addEventListener("click", () => {
 
           Cookies.set("userNameSneaky", val.username, { expires: 7 });
           Cookies.set("passwordSneaky", val.password, { expires: 7 });
+
+          // delete icon profile
+          $profileBtn.classList.add("hidden");
         }
       });
     })

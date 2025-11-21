@@ -57,7 +57,7 @@ if (cartsCookie != undefined) {
   cartsCookie = JSON.parse(cartsCookie);
   totalPriceCookie = JSON.parse(totalPriceCookie);
   $priceBasketTotal.innerText = totalPriceCookie;
-  
+
   cartsCookie.forEach((item) => {
     $productSelect.innerHTML += `
         <div class="w-[48%] duration-500 group cursor-pointer">
@@ -221,13 +221,22 @@ $btnLogIN.addEventListener("click", () => {
 });
 
 // products button
-let $productsBtn = document.getElementById("productsBtn");
+let $productsBtn = document.querySelectorAll(".productsBtn");
 let $productsWrapper = document.getElementById("productsWrapper");
 
-$productsBtn.addEventListener("click", () => {
-  $main.classList.add("hidden");
-  $productsWrapper.classList.remove("hidden");
-  $productsWrapper.classList.add("block");
+let $menuMobileBtn = document.querySelectorAll(".menuMobile");
+let $menuMobileWrapper = document.querySelector("#menuMobileWrapper");
+let $menuMobileWrapperClose = document.querySelector("#menuMobileWrapperClose");
+
+$productsBtn.forEach((val) => {
+  val.addEventListener("click", () => {
+    $main.classList.add("hidden");
+    $productsWrapper.classList.remove("hidden");
+    $productsWrapper.classList.add("block");
+
+    $menuMobileWrapper.classList.remove("left-0");
+    $menuMobileWrapper.classList.add("left-full");
+  });
 });
 
 // products fetch
@@ -348,3 +357,41 @@ function buy(s) {
   Cookies.set("carts", JSON.stringify(carts), { expires: 7 });
   Cookies.set("totalPrice", JSON.stringify(totalPrice), { expires: 7 });
 }
+
+// home btn in products page
+
+let $homeBtn = document.querySelector("#home");
+
+$homeBtn.addEventListener("click", () => {
+  $productsWrapper.classList.add("hidden");
+  $main.classList.remove("hidden");
+});
+
+// profileBtn
+
+$menuMobileBtn.forEach((val) => {
+  val.addEventListener("click", () => {
+    $menuMobileWrapper.classList.remove("left-full");
+    $menuMobileWrapper.classList.add("left-0");
+  });
+});
+
+$menuMobileWrapperClose.addEventListener("click", () => {
+  $menuMobileWrapper.classList.remove("left-0");
+  $menuMobileWrapper.classList.add("left-full");
+});
+
+let $homeBtnMobile = document.querySelector(".homeBtnMobile");
+
+console.log($homeBtnMobile);
+
+$homeBtnMobile.addEventListener("click", () => {
+  $productsWrapper.classList.remove("block");
+  $productsWrapper.classList.add("hidden");
+
+  $main.classList.remove("hidden");
+  $main.classList.add("block");
+
+  $menuMobileWrapper.classList.remove("left-0");
+  $menuMobileWrapper.classList.add("left-full");
+});

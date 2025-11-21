@@ -28,3 +28,7 @@
     right: -100%;
   }
 }
+
+* {
+  scroll-behavior: smooth;
+}

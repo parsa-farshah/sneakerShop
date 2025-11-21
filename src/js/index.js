@@ -47,7 +47,40 @@ if ($userNameAcc != undefined && $passwordAcc != undefined) {
 }
 
 // set basket products with cookie
+let $productSelect = document.getElementById("productSelect");
+let $productsDiv = document.getElementById("productsDiv");
+let cartsCookie = Cookies.get("carts");
+let $priceBasketTotal = document.querySelector("#priceBasket");
+let totalPriceCookie = Cookies.get("totalPrice");
 
+if (cartsCookie != undefined) {
+  cartsCookie = JSON.parse(cartsCookie);
+  totalPriceCookie = JSON.parse(totalPriceCookie);
+  $priceBasketTotal.innerText = totalPriceCookie;
+  
+  cartsCookie.forEach((item) => {
+    $productSelect.innerHTML += `
+        <div class="w-[48%] duration-500 group cursor-pointer">
+
+            <div class="w-full bg-white relative">
+
+             <!-------------------------- bg on image -------------------->
+
+            <div class="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-10% from-[#0000002d] to-[#fff0]  z-30 hidden group-hover:flex duration-500 "></div>
+
+              <img class="w-full h-[300px] object-contain p-8 img" src=${item.imgSrc} alt="" />
+            </div>
+
+            <!--------------------------- price and model ---------------------->
+
+            <div class=" mt-3">
+              <h5 class="mb-3 text-[#00000070] dark:text-[#e6e6e6c7] gender">${item.gender}</h5>
+              <h5 class="font-bold model">${item.model}</h5>
+              <span class="text-sm price">${item.price}</span>
+            </div>
+          </div>`;
+  });
+}
 
 let flag = 0;
 $darkLightBtn.addEventListener("click", () => {
@@ -199,8 +232,6 @@ $productsBtn.addEventListener("click", () => {
 
 // products fetch
 
-let $productsDiv = document.getElementById("productsDiv");
-
 async function dataFetch(url) {
   let response = await fetch(url, {
     method: "GET",
@@ -248,7 +279,7 @@ function nikeApi() {
             <div class=" mt-3">
               <h5 class="mb-3 text-[#00000070] dark:text-[#e6e6e6c7] gender">${item.gender}</h5>
               <h5 class="font-bold model">${item.model}</h5>
-              <span class="text-sm price">$ ${item.min_price}</span>
+              <span class="text-sm price">$ <span class="priceTotal">${item.min_price}</span></span>
             </div>
           </div>`;
     });
@@ -257,7 +288,7 @@ function nikeApi() {
 nikeApi();
 
 let $basketBtn = document.querySelectorAll(".basketBtn");
-let $productSelect = document.getElementById("productSelect");
+
 let $basketWrapper = document.getElementById("basketWrapper");
 let $closeBasket = document.getElementById("closeBasket");
 
@@ -273,10 +304,9 @@ $closeBasket.addEventListener("click", () => {
   $basketWrapper.classList.add("left-full");
 });
 
-let imgSrcArr = [];
-let genderArr = [];
-let modelArr = [];
-let priceArr = [];
+let carts = [];
+
+let totalPrice = 0;
 
 let flagBasketProducts = 1;
 function buy(s) {
@@ -300,24 +330,21 @@ function buy(s) {
   let gender = BasketProducts.querySelector(".gender").innerText;
   let model = BasketProducts.querySelector(".model").innerText;
   let price = BasketProducts.querySelector(".price").innerText;
+  let priceTotal = BasketProducts.querySelector(".priceTotal").innerText;
 
-  imgSrcArr.push(imgSrc);
-  genderArr.push(gender);
-  modelArr.push(model);
-  priceArr.push(price);
+  priceTotal = parseInt(priceTotal);
 
-  Cookies.set("flagBasketProductsNumber", BasketProducts, {
-    expires: 7,
+  totalPrice += priceTotal;
+
+  $priceBasketTotal.innerText = totalPrice;
+
+  carts.push({
+    imgSrc,
+    gender,
+    model,
+    price,
   });
 
-  Cookies.set("imgSrcArrSneaky", JSON.stringify(imgSrcArr), {
-    expires: 7,
-  });
-
-  Cookies.set("modelArrSneaky", JSON.stringify(modelArr), {
-    expires: 7,
-  });
-  Cookies.set("priceArrSneaky", JSON.stringify(priceArr), {
-    expires: 7,
-  });
+  Cookies.set("carts", JSON.stringify(carts), { expires: 7 });
+  Cookies.set("totalPrice", JSON.stringify(totalPrice), { expires: 7 });
 }

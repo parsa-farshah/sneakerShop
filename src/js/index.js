@@ -193,3 +193,62 @@ $productsBtn.addEventListener("click", () => {
   $productsWrapper.classList.remove("hidden");
   $productsWrapper.classList.add("block");
 });
+
+// products fetch
+
+let $productsDiv = document.getElementById("productsDiv");
+
+async function dataFetch(url) {
+  let response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer sd_TEGztsAvx7SjDRhdfnkxkrDzGiikAfPH",
+      "Content-Type": "application/json",
+    },
+  });
+  let products = await response.json();
+  return products;
+}
+
+let $moreNike = document.getElementById("moreNike");
+let productNumber = 20;
+$moreNike.addEventListener("click", () => {
+  productNumber = productNumber + 20;
+  $productsDiv.innerHTML = ""
+  nikeApi();
+});
+
+function nikeApi() {
+  dataFetch(
+    "https://api.kicks.dev/v3/stockx/products?limit=" +
+      productNumber +
+      "&query=nike&Key"
+  ).then((res) => {
+    let data = res.data;
+    data.map((item) => {
+      $productsDiv.innerHTML += ` 
+        <div class="w-[48%] lg:w-[22%] hover:-translate-y-3 duration-500 group cursor-pointer">
+
+            <div class="w-full bg-white relative">
+
+             <!-------------------------- bg on image -------------------->
+
+            <div class="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-10% from-[#0000002d] to-[#fff0]  z-30 hidden group-hover:flex duration-500 "></div>
+             <!-------------------------- shop now -------------------->
+
+            <div class="absolute bottom-[10%] -translate-x-1/2 left-1/2 w-[80%] md:w-[40%] border bg-white rounded-4xl flex justify-center items-center z-40 hover:scale-110 duration-300 text-black">Shop Now</div>
+              <img class="w-full h-[300px] object-contain p-8" src=${item.image} alt="" />
+            </div>
+
+            <!--------------------------- price and model ---------------------->
+
+            <div class=" mt-3">
+              <h5 class="mb-3 text-[#00000070] dark:text-[#e6e6e6c7]">${item.gender}</h5>
+              <h5 class="font-bold">${item.model}</h5>
+              <span class="text-sm">$ ${item.min_price}</span>
+            </div>
+          </div>`;
+    });
+  });
+}
+nikeApi();

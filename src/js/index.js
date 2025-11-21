@@ -366,7 +366,7 @@ function buy(s) {
   let price = BasketProducts.querySelector(".price").innerText;
   let priceTotal = BasketProducts.querySelector(".priceTotal").innerText;
 
-  $productSelect.innerHTML += `<div class="w-[45%] h-fit">
+  $productSelect.innerHTML += `<div class="w-[45%] h-fit" data-model="${model}">
   
         <div class="w-full duration-500 group cursor-pointer">
 
@@ -384,7 +384,8 @@ function buy(s) {
             <div class="mt-3">
               <h5 class="mb-3 text-[#00000070] dark:text-[#e6e6e6c7] gender">${gender}</h5>
               <h5 class="font-bold model">${model}</h5>
-              <span class="text-sm price">$ <span class="priceTotal">${price}</span></span>
+              <span class="text-sm price"><span class="priceTotal">${price}</span></span>
+              <svg onclick=trash(this) xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="mt-4 cursor-pointer hover:scale-125 duration-300"><path fill="#000000" d="m6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"/></svg>
             </div>
           </div>
   </div>`;
@@ -449,3 +450,19 @@ $homeBtnMobile.addEventListener("click", () => {
   $menuMobileWrapper.classList.remove("left-0");
   $menuMobileWrapper.classList.add("left-full");
 });
+
+// trash product
+function trash(s) {
+
+  let parentProduct = s.closest("[data-model]");
+  
+
+  let productModel = parentProduct.getAttribute("data-model");
+
+
+  carts = carts.filter(item => item.model !== productModel);
+
+  Cookies.set("carts", JSON.stringify(carts), { expires: 7 });
+
+  parentProduct.remove();
+}

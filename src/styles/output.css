@@ -312,6 +312,12 @@
   .w-\[40\%\] {
     width: 40%;
   }
+  .w-\[45\%\] {
+    width: 45%;
+  }
+  .w-\[48\%\] {
+    width: 48%;
+  }
   .w-\[50\%\] {
     width: 50%;
   }
@@ -389,14 +395,8 @@
   .gap-11 {
     gap: calc(var(--spacing) * 11);
   }
-  .gap-14 {
-    gap: calc(var(--spacing) * 14);
-  }
   .gap-20 {
     gap: calc(var(--spacing) * 20);
-  }
-  .gap-36 {
-    gap: calc(var(--spacing) * 36);
   }
   .gap-y-10 {
     row-gap: calc(var(--spacing) * 10);

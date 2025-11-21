@@ -1,5 +1,9 @@
 let $html = document.documentElement;
 let $darkLightBtn = document.getElementById("darkLightBtn");
+let $signupAlert = document.getElementById("signupAlert");
+let $logInAlert = document.getElementById("logInAlert");
+let $loading = document.getElementById("loading");
+let $shopNowAlert = document.getElementById("shopNowAlert");
 
 let $theme = Cookies.get("theme");
 
@@ -114,7 +118,6 @@ let $signUpWrapper = document.querySelector("#signUpWrapper");
 let $userNameWrapper = document.querySelector("#userNameWrapper");
 
 $btnSignUp.addEventListener("click", () => {
-  console.log($signUpInputs);
   let $SignUpName = $signUpInputs[0].value;
   let $SignUpEmail = $signUpInputs[1].value;
   let $SignUpPassword = $signUpInputs[2].value;
@@ -152,6 +155,14 @@ $btnSignUp.addEventListener("click", () => {
 
       // delete icon profile
       $profileBtn.classList.add("hidden");
+
+      $signupAlert.classList.remove("hidden");
+      $signupAlert.classList.add("block");
+
+      setTimeout(() => {
+        $signupAlert.classList.remove("block");
+        $signupAlert.classList.add("hidden");
+      }, 2000);
     })
     .catch((error) => {
       // handle error
@@ -212,6 +223,14 @@ $btnLogIN.addEventListener("click", () => {
 
           // delete icon profile
           $profileBtn.classList.add("hidden");
+
+          $logInAlert.classList.remove("hidden");
+          $logInAlert.classList.add("block");
+
+          setTimeout(() => {
+            $logInAlert.classList.remove("block");
+            $logInAlert.classList.add("hidden");
+          }, 2000);
         }
       });
     })
@@ -262,11 +281,14 @@ $moreNike.addEventListener("click", () => {
 });
 
 function nikeApi() {
+  $loading.classList.remove("hidden");
   dataFetch(
     "https://api.kicks.dev/v3/stockx/products?limit=" +
       productNumber +
       "&query=nike&Key"
   ).then((res) => {
+    $loading.classList.add("hidden");
+
     let data = res.data;
     data.map((item) => {
       $productsDiv.innerHTML += ` 
@@ -318,20 +340,23 @@ let carts = [];
 let totalPrice = 0;
 
 let flagBasketProducts = 1;
+
 function buy(s) {
   let BasketProducts = s.parentElement.parentElement;
 
-  let div = document.createElement("div");
-  div.classList.add("w-[45%]");
-  div.setAttribute("id", `product${flagBasketProducts++}`);
-  div.innerHTML = BasketProducts.innerHTML;
+  // let div = document.createElement("div");
+  // div.classList.add("w-[45%]");
+  // div.setAttribute("id", `product${flagBasketProducts++}`);
+  // div.innerHTML = BasketProducts.innerHTML;
 
-  $productSelect.appendChild(div);
+  // $productSelect.appendChild(div);
 
-  let $divId = div.getAttribute("id");
+  // let $divId = div.getAttribute("id");
 
-  let shopNow = document.querySelector(".shopNow");
-  shopNow.classList.add("hidden");
+  // let shopNow = document.querySelector(".shopNow");
+  // shopNow.classList.remove("hidden");
+
+  // shopNow.classList.add("hidden");
 
   let img = BasketProducts.querySelector(".img");
   let imgSrc = img.getAttribute("src");
@@ -340,6 +365,29 @@ function buy(s) {
   let model = BasketProducts.querySelector(".model").innerText;
   let price = BasketProducts.querySelector(".price").innerText;
   let priceTotal = BasketProducts.querySelector(".priceTotal").innerText;
+
+  $productSelect.innerHTML += `<div class="w-[45%] h-fit">
+  
+        <div class="w-full duration-500 group cursor-pointer">
+
+            <div class="w-full bg-white relative">
+
+             <!-------------------------- bg on image -------------------->
+
+            <div class="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-10% from-[#0000002d] to-[#fff0]  z-30 hidden group-hover:flex duration-500 "></div>
+
+              <img class="w-full h-[300px] object-contain p-8 img" src=${imgSrc} alt="" />
+            </div>
+
+            <!--------------------------- price and model ---------------------->
+
+            <div class="mt-3">
+              <h5 class="mb-3 text-[#00000070] dark:text-[#e6e6e6c7] gender">${gender}</h5>
+              <h5 class="font-bold model">${model}</h5>
+              <span class="text-sm price">$ <span class="priceTotal">${price}</span></span>
+            </div>
+          </div>
+  </div>`;
 
   priceTotal = parseInt(priceTotal);
 
@@ -356,6 +404,14 @@ function buy(s) {
 
   Cookies.set("carts", JSON.stringify(carts), { expires: 7 });
   Cookies.set("totalPrice", JSON.stringify(totalPrice), { expires: 7 });
+
+  $shopNowAlert.classList.remove("-right-[20%]");
+  $shopNowAlert.classList.add("right-0");
+
+  setTimeout(() => {
+    $shopNowAlert.classList.remove("right-0");
+    $shopNowAlert.classList.add("-right-[20%]");
+  }, 1500);
 }
 
 // home btn in products page
@@ -382,8 +438,6 @@ $menuMobileWrapperClose.addEventListener("click", () => {
 });
 
 let $homeBtnMobile = document.querySelector(".homeBtnMobile");
-
-console.log($homeBtnMobile);
 
 $homeBtnMobile.addEventListener("click", () => {
   $productsWrapper.classList.remove("block");

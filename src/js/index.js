@@ -4,6 +4,7 @@ let $signupAlert = document.getElementById("signupAlert");
 let $logInAlert = document.getElementById("logInAlert");
 let $loading = document.getElementById("loading");
 let $shopNowAlert = document.getElementById("shopNowAlert");
+let $basketBtn = document.querySelectorAll(".basketBtn");
 
 let $theme = Cookies.get("theme");
 
@@ -42,6 +43,10 @@ if ($userNameAcc != undefined && $passwordAcc != undefined) {
 
           // delete icon profile
           $profileBtn.classList.add("hidden");
+
+          $basketBtn.forEach((val) => {
+            val.classList.remove("hidden");
+          });
         }
       });
     })
@@ -163,6 +168,10 @@ $btnSignUp.addEventListener("click", () => {
         $signupAlert.classList.remove("block");
         $signupAlert.classList.add("hidden");
       }, 2000);
+
+      $basketBtn.forEach((val) => {
+        val.classList.remove("hidden");
+      });
     })
     .catch((error) => {
       // handle error
@@ -231,6 +240,10 @@ $btnLogIN.addEventListener("click", () => {
             $logInAlert.classList.remove("block");
             $logInAlert.classList.add("hidden");
           }, 2000);
+
+          $basketBtn.forEach((val) => {
+            val.classList.remove("hidden");
+          });
         }
       });
     })
@@ -317,8 +330,6 @@ function nikeApi() {
   });
 }
 nikeApi();
-
-let $basketBtn = document.querySelectorAll(".basketBtn");
 
 let $basketWrapper = document.getElementById("basketWrapper");
 let $closeBasket = document.getElementById("closeBasket");
@@ -411,17 +422,19 @@ function buy(s) {
 
   setTimeout(() => {
     $shopNowAlert.classList.remove("right-0");
-    $shopNowAlert.classList.add("-right-[20%]");
+    $shopNowAlert.classList.add("-right-[100%]");
   }, 1500);
 }
 
 // home btn in products page
 
-let $homeBtn = document.querySelector("#home");
+let $homeBtn = document.querySelectorAll(".home");
 
-$homeBtn.addEventListener("click", () => {
-  $productsWrapper.classList.add("hidden");
-  $main.classList.remove("hidden");
+$homeBtn.forEach((val) => {
+  val.addEventListener("click", () => {
+    $productsWrapper.classList.add("hidden");
+    $main.classList.remove("hidden");
+  });
 });
 
 // profileBtn
@@ -453,15 +466,13 @@ $homeBtnMobile.addEventListener("click", () => {
 
 // trash product
 function trash(s) {
-
   let parentProduct = s.closest("[data-model]");
-  
 
   let productModel = parentProduct.getAttribute("data-model");
 
-
-  carts = carts.filter(item => item.model !== productModel);
-
+  carts = carts.filter((item) => {
+    item.model !== productModel;
+  });
   Cookies.set("carts", JSON.stringify(carts), { expires: 7 });
 
   parentProduct.remove();

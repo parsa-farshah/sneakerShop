@@ -115,7 +115,7 @@
 
     <div
       id="shopNowAlert"
-      class="w-[80%] lg:w-[10%] h-[52px] bg-[#03A65A] rounded-4xl text-white flex justify-center items-center fixed top-[25%] -right-[20%] -translate-y-1/2 z-50 duration-500"
+      class="w-[30%] lg:w-[10%] h-[52px] bg-[#03A65A] rounded-4xl text-white flex justify-center items-center fixed top-[25%] -right-[100%] -translate-y-1/2 z-50 duration-500"
     >
       <h5 class="text-xl sm:text-sm font-extrabold capitalize">add to cart</h5>
       <img
@@ -299,7 +299,7 @@
 
               <!------------- basket -------->
               <div
-                class="relative before:content-[''] before:absolute before:top-[-10%] before:left-[102%] before:w-1 before:h-1 before:rounded-full before:border before:bg-black cursor-pointer basketBtn"
+                class="relative before:content-[''] before:absolute before:top-[-10%] before:left-[102%] before:w-1 before:h-1 before:rounded-full before:border before:bg-black cursor-pointer basketBtn hidden"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -611,7 +611,7 @@
             >
               <li id="productsBtn"><a href="#">products</a></li>
               <li><a href="#footer">about us</a></li>
-              <li id="home"><a>Home</a></li>
+              <li class="home"><a>Home</a></li>
             </ul>
             <!----------------------- menu and basket --------------->
             <div class="flex items-center gap-4 sm:gap-8 lg:mr-8">
@@ -737,35 +737,14 @@
           </svg>
           <!-- links -->
           <ul
-            class="hidden lg:flex **:capitalize gap-11 archivo font-semibold text-lg"
+            class="hidden lg:flex *:cursor-pointer **:capitalize gap-11 archivo font-semibold text-lg"
           >
-            <li><a href="">products</a></li>
-            <li><a href="">about us</a></li>
-            <li><a href="">blog</a></li>
-            <li><a href="">contact us</a></li>
+            <li class="home"><span href="">Home</span></li>
+            <li class="productsBtn"><span href="">Products</span></li>
+            <li><span href="">about Us</span></li>
           </ul>
           <!----------------------- menu and basket --------------->
           <div class="flex items-center gap-4 sm:gap-8 lg:mr-8">
-            <!------------- basket -------->
-            <div
-              class="relative before:content-[''] before:absolute before:top-[-10%] before:left-[102%] before:w-1 before:h-1 before:rounded-full before:border before:bg-black cursor-pointer"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-6 dark:stroke-white"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-                />
-              </svg>
-            </div>
-
             <!-------------- profile --------->
             <svg
               id="profile"
@@ -790,7 +769,7 @@
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class="size-6 cursor-pointer lg:hidden duration-300"
+              class="size-6 cursor-pointer lg:hidden duration-300 menuMobile"
             >
               <path
                 stroke-linecap="round"

@@ -46,6 +46,9 @@ if ($userNameAcc != undefined && $passwordAcc != undefined) {
     });
 }
 
+// set basket products with cookie
+
+
 let flag = 0;
 $darkLightBtn.addEventListener("click", () => {
   $html.classList.toggle("dark");
@@ -236,16 +239,16 @@ function nikeApi() {
             <div class="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-10% from-[#0000002d] to-[#fff0]  z-30 hidden group-hover:flex duration-500 "></div>
              <!-------------------------- shop now -------------------->
 
-            <div onclick=buy(this) class="absolute bottom-[10%] -translate-x-1/2 left-1/2 w-[80%] md:w-[40%] border bg-white rounded-4xl flex justify-center items-center z-40 hover:scale-110 duration-300 text-black">Shop Now</div>
-              <img class="w-full h-[300px] object-contain p-8" src=${item.image} alt="" />
+            <div onclick=buy(this) class="absolute bottom-[10%] -translate-x-1/2 left-1/2 w-[80%] md:w-[40%] border bg-white rounded-4xl flex justify-center items-center z-40 hover:scale-110 duration-300 text-black shopNow">Shop Now</div>
+              <img class="w-full h-[300px] object-contain p-8 img" src=${item.image} alt="" />
             </div>
 
             <!--------------------------- price and model ---------------------->
 
             <div class=" mt-3">
-              <h5 class="mb-3 text-[#00000070] dark:text-[#e6e6e6c7]">${item.gender}</h5>
-              <h5 class="font-bold">${item.model}</h5>
-              <span class="text-sm">$ ${item.min_price}</span>
+              <h5 class="mb-3 text-[#00000070] dark:text-[#e6e6e6c7] gender">${item.gender}</h5>
+              <h5 class="font-bold model">${item.model}</h5>
+              <span class="text-sm price">$ ${item.min_price}</span>
             </div>
           </div>`;
     });
@@ -270,13 +273,51 @@ $closeBasket.addEventListener("click", () => {
   $basketWrapper.classList.add("left-full");
 });
 
+let imgSrcArr = [];
+let genderArr = [];
+let modelArr = [];
+let priceArr = [];
+
+let flagBasketProducts = 1;
 function buy(s) {
   let BasketProducts = s.parentElement.parentElement;
-  console.log(BasketProducts);
 
   let div = document.createElement("div");
   div.classList.add("w-[45%]");
+  div.setAttribute("id", `product${flagBasketProducts++}`);
   div.innerHTML = BasketProducts.innerHTML;
 
   $productSelect.appendChild(div);
+
+  let $divId = div.getAttribute("id");
+
+  let shopNow = document.querySelector(".shopNow");
+  shopNow.classList.add("hidden");
+
+  let img = BasketProducts.querySelector(".img");
+  let imgSrc = img.getAttribute("src");
+
+  let gender = BasketProducts.querySelector(".gender").innerText;
+  let model = BasketProducts.querySelector(".model").innerText;
+  let price = BasketProducts.querySelector(".price").innerText;
+
+  imgSrcArr.push(imgSrc);
+  genderArr.push(gender);
+  modelArr.push(model);
+  priceArr.push(price);
+
+  Cookies.set("flagBasketProductsNumber", BasketProducts, {
+    expires: 7,
+  });
+
+  Cookies.set("imgSrcArrSneaky", JSON.stringify(imgSrcArr), {
+    expires: 7,
+  });
+
+  Cookies.set("modelArrSneaky", JSON.stringify(modelArr), {
+    expires: 7,
+  });
+  Cookies.set("priceArrSneaky", JSON.stringify(priceArr), {
+    expires: 7,
+  });
 }

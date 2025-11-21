@@ -268,6 +268,8 @@ $productsBtn.forEach((val) => {
 
     $menuMobileWrapper.classList.remove("left-0");
     $menuMobileWrapper.classList.add("left-full");
+
+    $profile.classList.add("hidden");
   });
 });
 
@@ -434,6 +436,8 @@ $homeBtn.forEach((val) => {
   val.addEventListener("click", () => {
     $productsWrapper.classList.add("hidden");
     $main.classList.remove("hidden");
+
+    $profile.classList.add("hidden");
   });
 });
 

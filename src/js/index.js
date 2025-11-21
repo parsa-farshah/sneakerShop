@@ -214,7 +214,7 @@ let $moreNike = document.getElementById("moreNike");
 let productNumber = 20;
 $moreNike.addEventListener("click", () => {
   productNumber = productNumber + 20;
-  $productsDiv.innerHTML = ""
+  $productsDiv.innerHTML = "";
   nikeApi();
 });
 
@@ -236,7 +236,7 @@ function nikeApi() {
             <div class="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-10% from-[#0000002d] to-[#fff0]  z-30 hidden group-hover:flex duration-500 "></div>
              <!-------------------------- shop now -------------------->
 
-            <div class="absolute bottom-[10%] -translate-x-1/2 left-1/2 w-[80%] md:w-[40%] border bg-white rounded-4xl flex justify-center items-center z-40 hover:scale-110 duration-300 text-black">Shop Now</div>
+            <div onclick=buy(this) class="absolute bottom-[10%] -translate-x-1/2 left-1/2 w-[80%] md:w-[40%] border bg-white rounded-4xl flex justify-center items-center z-40 hover:scale-110 duration-300 text-black">Shop Now</div>
               <img class="w-full h-[300px] object-contain p-8" src=${item.image} alt="" />
             </div>
 
@@ -252,3 +252,24 @@ function nikeApi() {
   });
 }
 nikeApi();
+
+function buy(s) {
+  console.log(s.parentElement);
+}
+
+let $basketBtn = document.querySelectorAll(".basketBtn");
+let $productSelect = document.getElementById("productSelect");
+let $basketWrapper = document.getElementById("basketWrapper");
+let $closeBasket = document.getElementById("closeBasket");
+
+$basketBtn.forEach((val) => {
+  val.addEventListener("click", () => {
+    $basketWrapper.classList.remove("left-full");
+    $basketWrapper.classList.add("left-0");
+  });
+});
+
+$closeBasket.addEventListener("click", () => {
+  $basketWrapper.classList.remove("left-0");
+  $basketWrapper.classList.add("left-full");
+});

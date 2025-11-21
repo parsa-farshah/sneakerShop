@@ -374,6 +374,9 @@
   .w-7 {
     width: calc(var(--spacing) * 7);
   }
+  .w-\[7\] {
+    width: 7;
+  }
   .w-\[40\%\] {
     width: 40%;
   }
@@ -473,6 +476,9 @@
   .items-center {
     align-items: center;
   }
+  .justify-around {
+    justify-content: space-around;
+  }
   .justify-between {
     justify-content: space-between;
   }
@@ -499,6 +505,12 @@
   }
   .overflow-hidden {
     overflow: hidden;
+  }
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
+  .overflow-y-scroll {
+    overflow-y: scroll;
   }
   .rounded-3xl {
     border-radius: var(--radius-3xl);
@@ -936,6 +948,11 @@
   .md\:flex {
     @media (width >= 48rem) {
       display: flex;
+    }
+  }
+  .md\:h-\[70\%\] {
+    @media (width >= 48rem) {
+      height: 70%;
     }
   }
   .md\:h-\[600px\] {

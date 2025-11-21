@@ -253,10 +253,6 @@ function nikeApi() {
 }
 nikeApi();
 
-function buy(s) {
-  console.log(s.parentElement);
-}
-
 let $basketBtn = document.querySelectorAll(".basketBtn");
 let $productSelect = document.getElementById("productSelect");
 let $basketWrapper = document.getElementById("basketWrapper");
@@ -273,3 +269,14 @@ $closeBasket.addEventListener("click", () => {
   $basketWrapper.classList.remove("left-0");
   $basketWrapper.classList.add("left-full");
 });
+
+function buy(s) {
+  let BasketProducts = s.parentElement.parentElement;
+  console.log(BasketProducts);
+
+  let div = document.createElement("div");
+  div.classList.add("w-[45%]");
+  div.innerHTML = BasketProducts.innerHTML;
+
+  $productSelect.appendChild(div);
+}

@@ -452,6 +452,18 @@
   .bg-\[url\(\.\.\/images\/bg-header\.jpg\)\] {
     background-image: url(../images/bg-header.jpg);
   }
+  .bg-\[url\(\.\.\/images\/bgHeaderDark\.jpg\)\] {
+    background-image: url(../images/bgHeaderDark.jpg);
+  }
+  .bg-\[url\(\.\.\/images\/bgProduct\.jpg\)\] {
+    background-image: url(../images/bgProduct.jpg);
+  }
+  .bg-\[url\(\.\.\/images\/bgProductWhite\.jpg\)\] {
+    background-image: url(../images/bgProductWhite.jpg);
+  }
+  .bg-\[url\(\.\.\/images\/bgProductWhite\.png\)\] {
+    background-image: url(../images/bgProductWhite.png);
+  }
   .from-\[\#f1f1f183\] {
     --tw-gradient-from: #f1f1f183;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -884,6 +896,11 @@
   .dark\:bg-\[url\(\.\.\/images\/bgHeaderDark\.jpg\)\] {
     &:where(.dark, .dark *) {
       background-image: url(../images/bgHeaderDark.jpg);
+    }
+  }
+  .dark\:bg-\[url\(\.\.\/images\/bgProduct\.jpg\)\] {
+    &:where(.dark, .dark *) {
+      background-image: url(../images/bgProduct.jpg);
     }
   }
   .dark\:bg-center {

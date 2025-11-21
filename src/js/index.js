@@ -183,3 +183,13 @@ $btnLogIN.addEventListener("click", () => {
       // handle error
     });
 });
+
+// products button
+let $productsBtn = document.getElementById("productsBtn");
+let $productsWrapper = document.getElementById("productsWrapper");
+
+$productsBtn.addEventListener("click", () => {
+  $main.classList.add("hidden");
+  $productsWrapper.classList.remove("hidden");
+  $productsWrapper.classList.add("block");
+});

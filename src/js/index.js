@@ -121,61 +121,75 @@ let $btnSignUp = document.querySelector("#btnSignUp");
 let $signUpInputs = document.querySelectorAll("#signUpWrapper>div>input");
 let $signUpWrapper = document.querySelector("#signUpWrapper");
 let $userNameWrapper = document.querySelector("#userNameWrapper");
+let $inputEmpty = document.querySelector("#inputEmpty");
 
 $btnSignUp.addEventListener("click", () => {
-  let $SignUpName = $signUpInputs[0].value;
-  let $SignUpEmail = $signUpInputs[1].value;
-  let $SignUpPassword = $signUpInputs[2].value;
+  if (
+    $signUpInputs[0].value == "" &&
+    $signUpInputs[1].value == "" &&
+    $signUpInputs[2].value == ""
+  ) {
+    $inputEmpty.classList.remove("hidden");
+    $inputEmpty.classList.add("flex");
+    setTimeout(() => {
+      $inputEmpty.classList.remove("flex");
+      $inputEmpty.classList.add("hidden");
+    }, 2000);
+  } else {
+    let $SignUpName = $signUpInputs[0].value;
+    let $SignUpEmail = $signUpInputs[1].value;
+    let $SignUpPassword = $signUpInputs[2].value;
 
-  // signup add to mock api
-  const newTask = {
-    username: $SignUpName,
-    email: $SignUpEmail,
-    password: $SignUpPassword,
-  };
+    // signup add to mock api
+    const newTask = {
+      username: $SignUpName,
+      email: $SignUpEmail,
+      password: $SignUpPassword,
+    };
 
-  fetch("https://6912e51452a60f10c8232605.mockapi.io/users", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    // Send your data in the request body as JSON
-    body: JSON.stringify(newTask),
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // handle error
+    fetch("https://6912e51452a60f10c8232605.mockapi.io/users", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      // Send your data in the request body as JSON
+      body: JSON.stringify(newTask),
     })
-    .then((task) => {
-      // do something with the new task
-      $userNameWrapper.innerText = "Hi," + task.username;
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        // handle error
+      })
+      .then((task) => {
+        // do something with the new task
+        $userNameWrapper.innerText = "Hi," + task.username;
 
-      // go to main page
-      $profile.classList.remove("flex");
-      $main.classList.remove("hidden");
-      $main.classList.add("block");
+        // go to main page
+        $profile.classList.remove("flex");
+        $main.classList.remove("hidden");
+        $main.classList.add("block");
 
-      Cookies.set("userNameSneaky", task.username, { expires: 7 });
-      Cookies.set("passwordSneaky", task.password, { expires: 7 });
+        Cookies.set("userNameSneaky", task.username, { expires: 7 });
+        Cookies.set("passwordSneaky", task.password, { expires: 7 });
 
-      // delete icon profile
-      $profileBtn.classList.add("hidden");
+        // delete icon profile
+        $profileBtn.classList.add("hidden");
 
-      $signupAlert.classList.remove("hidden");
-      $signupAlert.classList.add("block");
+        $signupAlert.classList.remove("hidden");
+        $signupAlert.classList.add("block");
 
-      setTimeout(() => {
-        $signupAlert.classList.remove("block");
-        $signupAlert.classList.add("hidden");
-      }, 2000);
+        setTimeout(() => {
+          $signupAlert.classList.remove("block");
+          $signupAlert.classList.add("hidden");
+        }, 2000);
 
-      $basketBtn.forEach((val) => {
-        val.classList.remove("hidden");
+        $basketBtn.forEach((val) => {
+          val.classList.remove("hidden");
+        });
+      })
+      .catch((error) => {
+        // handle error
       });
-    })
-    .catch((error) => {
-      // handle error
-    });
+  }
 });
 
 // log in
@@ -203,53 +217,65 @@ let $btnLogIN = document.querySelector("#btnLogIN");
 let $logInWrapperInputs = document.querySelectorAll("#logInWrapper>div>input");
 
 $btnLogIN.addEventListener("click", () => {
-  let emailLogIn = $logInWrapperInputs[0].value;
-  let passwordLogIn = $logInWrapperInputs[1].value;
+  if (
+    $logInWrapperInputs[0].value == "" &&
+    $logInWrapperInputs[1].value == ""
+  ) {
+    $inputEmpty.classList.remove("hidden");
+    $inputEmpty.classList.add("flex");
+    setTimeout(() => {
+      $inputEmpty.classList.remove("flex");
+      $inputEmpty.classList.add("hidden");
+    }, 2000);
+  } else {
+    let emailLogIn = $logInWrapperInputs[0].value;
+    let passwordLogIn = $logInWrapperInputs[1].value;
 
-  fetch("https://6912e51452a60f10c8232605.mockapi.io/users", {
-    method: "GET",
-    headers: { "content-type": "application/json" },
-  })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      // handle error
+    fetch("https://6912e51452a60f10c8232605.mockapi.io/users", {
+      method: "GET",
+      headers: { "content-type": "application/json" },
     })
-    .then((tasks) => {
-      // Do something with the list of tasks
-      tasks.map((val) => {
-        if (val.email == emailLogIn && val.password == passwordLogIn) {
-          $userNameWrapper.innerText = "Hi," + val.username;
-
-          // go to main page
-          $profile.classList.remove("flex");
-          $main.classList.remove("hidden");
-          $main.classList.add("block");
-
-          Cookies.set("userNameSneaky", val.username, { expires: 7 });
-          Cookies.set("passwordSneaky", val.password, { expires: 7 });
-
-          // delete icon profile
-          $profileBtn.classList.add("hidden");
-
-          $logInAlert.classList.remove("hidden");
-          $logInAlert.classList.add("block");
-
-          setTimeout(() => {
-            $logInAlert.classList.remove("block");
-            $logInAlert.classList.add("hidden");
-          }, 2000);
-
-          $basketBtn.forEach((val) => {
-            val.classList.remove("hidden");
-          });
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
         }
+        // handle error
+      })
+      .then((tasks) => {
+        // Do something with the list of tasks
+        tasks.map((val) => {
+          if (val.email == emailLogIn && val.password == passwordLogIn) {
+            $userNameWrapper.innerText = "Hi," + val.username;
+
+            // go to main page
+            $profile.classList.remove("flex");
+            $main.classList.remove("hidden");
+            $main.classList.add("block");
+
+            Cookies.set("userNameSneaky", val.username, { expires: 7 });
+            Cookies.set("passwordSneaky", val.password, { expires: 7 });
+
+            // delete icon profile
+            $profileBtn.classList.add("hidden");
+
+            $logInAlert.classList.remove("hidden");
+            $logInAlert.classList.add("block");
+
+            setTimeout(() => {
+              $logInAlert.classList.remove("block");
+              $logInAlert.classList.add("hidden");
+            }, 2000);
+
+            $basketBtn.forEach((val) => {
+              val.classList.remove("hidden");
+            });
+          }
+        });
+      })
+      .catch((error) => {
+        // handle error
       });
-    })
-    .catch((error) => {
-      // handle error
-    });
+  }
 });
 
 // products button
@@ -356,20 +382,6 @@ let flagBasketProducts = 1;
 
 function buy(s) {
   let BasketProducts = s.parentElement.parentElement;
-
-  // let div = document.createElement("div");
-  // div.classList.add("w-[45%]");
-  // div.setAttribute("id", `product${flagBasketProducts++}`);
-  // div.innerHTML = BasketProducts.innerHTML;
-
-  // $productSelect.appendChild(div);
-
-  // let $divId = div.getAttribute("id");
-
-  // let shopNow = document.querySelector(".shopNow");
-  // shopNow.classList.remove("hidden");
-
-  // shopNow.classList.add("hidden");
 
   let img = BasketProducts.querySelector(".img");
   let imgSrc = img.getAttribute("src");
@@ -480,4 +492,10 @@ function trash(s) {
   Cookies.set("carts", JSON.stringify(carts), { expires: 7 });
 
   parentProduct.remove();
+}
+
+// password show
+function eye(s) {
+  let inp = s.parentElement.childNodes[3];
+  inp.setAttribute("type", "text");
 }

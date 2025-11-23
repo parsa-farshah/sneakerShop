@@ -410,7 +410,7 @@ function buy(s) {
               <h5 class="mb-3 text-[#00000070] dark:text-[#e6e6e6c7] gender">${gender}</h5>
               <h5 class="font-bold model">${model}</h5>
               <span class="text-sm price"><span class="priceTotal">${price}</span></span>
-              <svg onclick=trash(this) xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="mt-4 cursor-pointer hover:scale-125 duration-300"><path fill="#000000" d="m6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z"/></svg>
+              <svg onclick=trash(this) xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" class="mt-4 cursor-pointer hover:scale-125 duration-300"><path fill="#000000" d="m6 2l2-2h4l2 2h4v2H2V2h4zM3 6h14l-1 14H4L3 6zm5 2v10h1V8H8zm3 0v10h1V8h-1z" class="dark:fill-white"/></svg>
             </div>
           </div>
   </div>`;
